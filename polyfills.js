@@ -97,7 +97,7 @@ function patch (fs) {
       fs$rename(from, to, function CB (er) {
         if (er
             && (er.code === "EACCES" || er.code === "EPERM" || er.code === "EBUSY")
-            && Date.now() - start < 60000) {
+            && Date.now() - start < 5000) {
           setTimeout(function() {
             fs.stat(to, function (stater, st) {
               if (stater && stater.code === "ENOENT")
